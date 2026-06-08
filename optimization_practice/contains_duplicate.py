@@ -63,3 +63,33 @@ Optimized:   False  # O(n)
 =================================================
 
 """
+def has_duplicate_brute(nums):
+    # Use two nested for loops to compare every pair (i, j) with i < j
+    for i in range(len(nums)):
+        for j in range(i + 1, len(nums)):
+            if nums[i] == nums[j]:
+                return True
+    return False
+
+def has_duplicate_fast(nums):
+    # Create an empty SET called 'seen'
+    seen = set()
+    # Use a SINGLE for loop over nums
+    for num in nums:
+        if num in seen:
+            return True
+        seen.add(num)
+    return False
+
+# Example inputs
+input1 = [1, 2, 3, 1]
+input2 = [1, 2, 3, 4]
+
+# Call and print results
+print(f"Input: {input1}")
+print(f"Brute Force: {has_duplicate_brute(input1)}")
+print(f"Optimized: {has_duplicate_fast(input1)}")
+
+print(f"\nInput: {input2}")
+print(f"Brute Force: {has_duplicate_brute(input2)}")
+print(f"Optimized: {has_duplicate_fast(input2)}")
